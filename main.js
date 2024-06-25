@@ -61,7 +61,7 @@ refs.searchFormElem.addEventListener('submit', async e => {
 
     const markup = photosTemplate(res.hits);
     refs.imagesListElem.innerHTML = markup;
-    showPubliciti();
+    // showPubliciti();
   } catch (err) {
     console.log(err.message);
   }
