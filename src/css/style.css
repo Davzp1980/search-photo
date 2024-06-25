@@ -1,6 +1,6 @@
 @import url('./reset.css');
 
-.visually-hidden {
+.visually-hidden.loader {
   position: absolute;
   width: 1px;
   height: 1px;
