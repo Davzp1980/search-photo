@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search photo</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-container">
+        <form class="search-form">
+          <input
+            class="search-input"
+            type="text"
+            name="query"
+            placeholder="Search images..."
+          />
+          <button class="search-btn" type="submit">Search</button>
+        </form>
+      </div>
+      <div class="loader visually-hidden"></div>
+      <div class="img-list-container">
+        <ul class="img-list"></ul>
+      </div>
+      <div class="loader observer-loader visually-hidden"></div>
+      <div class="observer"></div>
+      <div class="window">
+        <div class="content">
+          <div class="close-btn">
+            <img src="./public/icons8-close-24.png" alt="" />
+          </div>
+          <p>РЕКЛАМА</p>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
