@@ -2,16 +2,9 @@ import { loadPhotos } from './src/js/photo-api';
 import { photosTemplate } from './src/js/photo-render';
 import iziToast from 'izitoast';
 import './node_modules/izitoast/dist/css/iziToast.min.css';
-import {
-  turnOffSearchBtn,
-  turnOnSearchBtn,
-  showLoader,
-  hideLoader,
-  observeStatus,
-  showPubliciti,
-} from './src/js/help-funclions';
 
-export const refs = {
+const observer = new IntersectionObserver(intersectionObserve);
+const refs = {
   searchFormElem: document.querySelector('.search-form'),
   imagesListElem: document.querySelector('.img-list'),
   loaderElem: document.querySelector('.loader'),
@@ -23,10 +16,9 @@ export const refs = {
   closeBtn: document.querySelector('.close-btn'),
 };
 
-export const observer = new IntersectionObserver(intersectionObserve);
-export let query = '';
-export let currentPage = 1;
-export let maxPages = 1;
+let currentPage = 1;
+let query = '';
+let maxPages = 1;
 
 refs.searchFormElem.addEventListener('submit', async e => {
   e.preventDefault();
@@ -102,4 +94,48 @@ function intersectionObserve(entries) {
   if (entries[0].isIntersecting) {
     loadMore();
   }
+}
+
+function showPubliciti() {
+  setTimeout(() => {
+    refs.publicityElem.classList.add('show-publicity');
+  }, 2000);
+
+  setTimeout(() => {
+    refs.publicityElem.classList.remove('show-publicity');
+  }, 10000);
+}
+
+function observeStatus() {
+  if (currentPage >= maxPages) {
+    observer.unobserve(refs.ebserveElem);
+  } else {
+    observer.observe(refs.ebserveElem);
+  }
+}
+
+function scrollDown() {
+  const liElem = refs.imagesListElem.children[0];
+  const height = liElem.getBoundingClientRect().height;
+  scrollBy({
+    behavior: 'smooth',
+    top: height * 15,
+  });
+}
+
+function showLoader() {
+  refs.loaderElem.classList.remove('visually-hidden');
+}
+function hideLoader() {
+  refs.loaderElem.classList.add('visually-hidden');
+}
+
+function turnOffSearchBtn() {
+  refs.searchBtnElem.disabled = true;
+  refs.searchBtnElem.classList.add('search-btn-off');
+}
+
+function turnOnSearchBtn() {
+  refs.searchBtnElem.disabled = false;
+  refs.searchBtnElem.classList.remove('search-btn-off');
 }
