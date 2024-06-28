@@ -2,6 +2,8 @@ import { loadPhotos } from './src/js/photo-api';
 import { photosTemplate } from './src/js/photo-render';
 import iziToast from 'izitoast';
 import './node_modules/izitoast/dist/css/iziToast.min.css';
+import simpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const observer = new IntersectionObserver(intersectionObserve);
 const refs = {
@@ -19,6 +21,11 @@ const refs = {
 let currentPage = 1;
 let query = '';
 let maxPages = 1;
+
+const gallery = new simpleLightbox('.img-list a', {
+  captionDelay: 500,
+  captionPosition: 'bottom',
+});
 
 refs.searchFormElem.addEventListener('submit', async e => {
   e.preventDefault();
@@ -39,6 +46,7 @@ refs.searchFormElem.addEventListener('submit', async e => {
 
   try {
     const res = await loadPhotos(searchRequest, currentPage);
+    console.log(res);
     if (res.hits.length === 0) {
       iziToast.info({
         message: 'No photos by your request',
@@ -53,6 +61,7 @@ refs.searchFormElem.addEventListener('submit', async e => {
 
     const markup = photosTemplate(res.hits);
     refs.imagesListElem.innerHTML = markup;
+    gallery.refresh();
     // showPubliciti();
   } catch (err) {
     console.log(err.message);

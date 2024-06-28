@@ -1,11 +1,13 @@
 function photoTemplate(image) {
   return `<li class="list-item">
           <div class="img-box">           
-              <img
-                src="${image.previewURL}"
-                alt="${image.tags}"
+              <a class="gallery-link" href=${image.largeImageURL}>
+                <img
+                  src="${image.previewURL}"
+                 alt="${image.tags}"
                 title="${image.tags}"
-              />            
+                 /> 
+              </a>                        
           </div>
           <ul class="description-list">
             <li class="description-item">
