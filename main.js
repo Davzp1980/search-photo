@@ -60,7 +60,7 @@ refs.searchFormElem.addEventListener('submit', async e => {
     maxPages = Math.ceil(res.totalHits / 15);
 
     const markup = photosTemplate(res.hits);
-    refs.imagesListElem.innerHTML = markup;
+    refs.imagesListElem.insertAdjacentHTML('beforeend', markup);
     gallery.refresh();
     // showPubliciti();
   } catch (err) {
