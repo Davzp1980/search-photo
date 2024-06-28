@@ -46,7 +46,7 @@ refs.searchFormElem.addEventListener('submit', async e => {
 
   try {
     const res = await loadPhotos(searchRequest, currentPage);
-    console.log(res);
+
     if (res.hits.length === 0) {
       iziToast.info({
         message: 'No photos by your request',
