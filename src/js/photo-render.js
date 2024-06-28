@@ -4,9 +4,9 @@ function photoTemplate(image) {
               <a class="gallery-link" href=${image.largeImageURL}>
                 <img
                   src="${image.previewURL}"
-                 alt="${image.tags}"
-                title="${image.tags}"
-                 /> 
+                  alt="${image.tags}"
+                  title="${image.tags}"
+                /> 
               </a>                        
           </div>
           <ul class="description-list">

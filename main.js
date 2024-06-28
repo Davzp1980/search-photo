@@ -60,7 +60,7 @@ refs.searchFormElem.addEventListener('submit', async e => {
     maxPages = Math.ceil(res.totalHits / 15);
 
     const markup = photosTemplate(res.hits);
-    refs.imagesListElem.insertAdjacentHTML('beforeend', markup);
+    refs.imagesListElem.innerHTML = markup;
     gallery.refresh();
     // showPubliciti();
   } catch (err) {
@@ -90,6 +90,7 @@ async function loadMore() {
 
   const markup = photosTemplate(res.hits);
   refs.imagesListElem.insertAdjacentHTML('beforeend', markup);
+  gallery.refresh();
   refs.observerLoader.classList.add('visually-hidden');
   observeStatus();
   if (currentPage >= maxPages) {
