@@ -1,5 +1,10 @@
 import { defineConfig } from 'vite';
 
-export default defineConfig({
-  base: '/search-photo/',
+export default defineConfig(({ command }) => {
+  return {
+    define: {
+      [command === 'serve' ? 'global' : '_global']: {},
+    },
+    base: '/search-photo/',
+  };
 });
