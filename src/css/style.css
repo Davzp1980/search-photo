@@ -13,6 +13,10 @@
   overflow: hidden;
 }
 
+body {
+  background-color: rgb(137, 238, 191);
+}
+
 .container {
   width: 100%;
   margin: 0 auto;
