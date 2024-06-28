@@ -83,7 +83,6 @@ refs.inputElem.addEventListener('input', () => {
 });
 
 async function loadMore() {
-  console.log('hello');
   refs.observerLoader.classList.remove('visually-hidden');
   currentPage++;
   const res = await loadPhotos(query, currentPage);
